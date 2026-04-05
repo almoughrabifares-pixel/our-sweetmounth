@@ -3,31 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مساحتنا الخاصة | رغد وراشد</title>
+    <title>مساحتنا الخاصة |raghoodi and rachid </title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --dark: #0a0a0a; --card: rgba(255,255,255,0.03); }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--dark); color: #fff; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; }
-        .box { width: 85%; max-width: 400px; padding: 40px; border-radius: 25px; background: var(--card); border: 1px solid rgba(212,175,55,0.2); backdrop-filter: blur(10px); }
-        h1 { color: var(--gold); margin-bottom: 5px; font-size: 1.6rem; }
-        .status { font-size: 0.8rem; color: #00ff00; margin-bottom: 30px; display: block; text-shadow: 0 0 5px #00ff00; }
-        .meal { background: rgba(255,255,255,0.02); padding: 15px; border-radius: 15px; border-right: 3px solid var(--gold); text-align: right; margin: 20px 0; }
+        /* الألوان الجديدة: خلفية بيضاء وتفاصيل حمراء */
+        :root { 
+            --accent-red: #e63946; /* لون أحمر فخم */
+            --bg-white: #ffffff; 
+            --card-white: #f8f9fa;
+            --text-dark: #2b2d42;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--bg-white); 
+            color: var(--text-dark); 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            text-align: center;
+            background-image: radial-gradient(circle at top right, #fff5f5, #ffffff);
+        }
+
+        .box { 
+            width: 85%; 
+            max-width: 400px; 
+            padding: 40px; 
+            border-radius: 25px; 
+            background: var(--card-white); 
+            border: 1px solid rgba(230, 57, 70, 0.1); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px); 
+        }
+
+        h1 { color: var(--accent-red); margin-bottom: 5px; font-size: 1.6rem; }
+
+        .status { 
+            font-size: 0.8rem; 
+            color: var(--accent-red); 
+            margin-bottom: 30px; 
+            display: block; 
+            font-weight: bold;
+        }
+
+        .meal { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border-right: 4px solid var(--accent-red); 
+            text-align: right; 
+            margin: 20px 0; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
         .stars { color: #ffcc00; margin-top: 5px; }
-        footer { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; margin-top: 20px; }
+
+        .led-dot {
+            height: 10px;
+            width: 10px;
+            background-color: var(--accent-red);
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+            box-shadow: 0 0 8px var(--accent-red);
+            animation: blink 2s infinite;
+        }
+
+        footer { font-size: 0.85rem; opacity: 0.7; line-height: 1.6; margin-top: 20px; }
+        
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
     <div class="box">
         <h1>مساحتنا الخاصة</h1>
-        <span class="status">● متصل الآن بقلب رغد</span>
+        <span class="status">online الآن بقلب رغد <span class="led-dot"></span></span>
+        
         <div class="meal">
-            <small style="color:var(--gold)">إبداع هذا الشهر:</small>
-            <div style="margin-top:5px">تارت الليمون المنعش 🍋</div>
+            <small style="color:var(--accent-red); font-weight: bold;">إبداع هاد الشهر:</small>
+            <div id="meal-name" style="margin-top:8px; font-size: 1.1rem; font-weight: 700;">جاري التحميل...</div>
             <div class="stars">★★★★★</div>
         </div>
+
         <footer>
-            "كل شهر تزيدين حياتي حلاوة.. <br> شكراً لكل مجهود تبذلينه لأجلي."
+            "كل شهر بتزيديي حياتي حلاوة.. <br> thanks for your hands."
         </footer>
     </div>
+
+    <script>
+        // مصفوفة الأكلات حسب الأشهر
+        const meals = {
+            1: "custard whith gelii and strawbarry 🍮",
+            2: "chouclate balls 🍫",
+            3: " tira miss you ☕",
+            4: "  laoding.....", // بما أننا في شهر 4 الآن
+            5: "ناطر إبداعك القادم.. ✨"
+        };
+
+        // الحصول على الشهر الحالي برمجياً
+        const currentMonth = new Date().getMonth() + 1;
+        
+        // عرض الأكلة المناسبة للشهر
+        document.getElementById('meal-name').innerText = meals[currentMonth] || "مستني لمستكِ الحلوة.. ✨";
+    </script>
 </body>
 </html>
